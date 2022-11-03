@@ -1,0 +1,102 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title {
+    background-color: aqua;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .outer-container {
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .matches-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .match {
+    display: flex;
+    border: 1px solid red;
+    width: 100%;
+  }
+  
+  .info {
+    flex: 3;
+    padding: 20px;
+  }
+  
+  .actions {
+    flex-direction: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .alert {
+    font-weight: 700;
+    color: red;
+  }
+  
+  .comments-container {
+    border-top: 2px dotted red;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comment {
+    display: flex;
+    flex-direction: column;
+    background-color: bisque;
+  }
+  
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+  }
+  
+  .body {
+    width: 100%;
+  }
+  
+  .login-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .login-actions a {
+    margin-left: 30px;
+  }
+  
+  .comments-container {
+    margin-top: 10px;
+  }
+  
+  
+  .leftAndRight {
+    display: flex;
+  }
+  
+  .score-table {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+  }
