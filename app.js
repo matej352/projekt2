@@ -2,6 +2,23 @@ const express = require('express');
 const dotenv = require('dotenv');
 const https = require("https");
 const path = require('path');
+const { Pool } = require('pg')
+
+
+const pool = new Pool({
+	user: "adminko",
+	host: "dpg-cdhv41un6mpue9hi40ig-a.frankfurt-postgres.render.com",
+	database: 'vulnerable_db',
+	password: "xM5OiXstfF4LqbXJTt7xRyD34bYRxaaj",
+	port: 5432,
+	ssl : true
+
+	
+});
+
+
+
+
 
 const bodyParser = require('body-parser');
 
@@ -29,22 +46,37 @@ app.get('/', (req, res) => {
 	res.redirect('home');
 });
 
-app.get('/home', function (req, res) {
+app.get('/home', async function (req, res) {
 
-   
-    res.render('home');
+	const students = await getComments();
+	//console.log(students)
+	res.render('home', {
+        students: students
+    });
 });
 
 //const homeController = require('./controllers/homeController');
 
 //app.use(homeController);
 
+
+
+async function getComments() {
+	
+	const results = await (await pool.query('SELECT * from Student')).rows;
+	return results;
+	}
+	
+
+
+
+
 if (externalUrl) {
 	const hostname = '127.0.0.1';
 	app.listen(PORT, hostname, () => {
 		console.log(`Server locally running at http://${hostname}:${PORT}/ and from
 	outside on ${externalUrl}`);
-	});	
+	});
 } else {
 	https.createServer({
 		key: fs.readFileSync('server.key'),

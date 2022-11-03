@@ -5,5 +5,11 @@
     <body>
         <main>
             <div>Hello world</div>
+            <% for(var i=0; i<students.length; i++) {%>
+                <div>
+                    <%= students[i].firstname%>
+                </div>
+
+                <% } %>
         </main>
         <%- include('./shared/end.ejs') %>
