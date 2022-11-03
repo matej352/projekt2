@@ -4,12 +4,19 @@
 
     <body>
         <main>
-            <div>Hello world</div>
-            <% for(var i=0; i<students.length; i++) {%>
-                <div>
-                    <%= students[i].firstname%>
+
+            <p>Hi, This application demonstrates two common web application vulnerabilities: <b>SQL Injection</b> and
+                <b>Broken Authentication</b></p>
+            <div class="row">
+                <div style="margin-right: 20px;">
+                    <a class="nav-link" href="/safe">Safe</a>
+                </div>
+                <div style="margin-left: 20px;">
+                    <a class="nav-link" href="/vulnerable">Vulnerable</a>
                 </div>
 
-                <% } %>
+            </div>
+
+
         </main>
         <%- include('./shared/end.ejs') %>

@@ -1,0 +1,133 @@
+<%- include('./shared/head.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    </head>
+
+    <body>
+        <main>
+            
+            <p>Hi, This application demonstrates two common web application vulnerabilities: <b>SQL Injection</b> and <b>Broken Authentication</b></p>
+            <div class="row">
+                <div>
+                    <a class="nav-link" href="/home">Go back home</a>
+                </div>
+              
+            
+                <div class="safe">
+                   <p style="font-size: 30px;font-weight: 800; background-color: aqua;">Safe</p>
+                   <div><h1>SQL Injection</h1></div>
+                   <div>Let us assume that you are logged in as Pero Perić and your id is 1</div>
+                   <div>Enter your id so you can get all your informations</div>
+                   <div>
+                    <form action="/getStudent?id=1" method="POST">
+                                <input type="text" name="studentId" id="studentId" placeholder="Enter your id">
+                                <button type="submit">Submit</button>
+                    </form>
+                    <div>
+                        <% if(student != null){ %>
+                            <div style="margin-left: 20px; width: 800px;">
+                                <% for(var i=0; i<student.length; i++) {%>
+                                    <div class="flex-row" style="margin-top: 15px;width: 100%;">
+                                        <div style="flex: 1;">id</div>
+                                        <div><%= student[i].id%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">jmbag</div>
+                                        <div><%= student[i].jmbag%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">firstname</div>
+                                        <div><%= student[i].firstname%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">lastname</div>
+                                        <div><%= student[i].lastname%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">password</div>
+                                        <div><%= student[i].password%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">salt</div>
+                                        <div><%= student[i].salt%></div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div style="flex: 1;">email</div>
+                                        <div><%= student[i].email%></div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <% } %>
+                     </div>
+                   </div>
+                   <div>
+                    <h1>Broken Authentication</h1>
+                </div>
+                <div>Create your student user account and check all user data</div>
+                <div class="register-form">
+                    <form action="/createAccount" method="POST" style="display: flex; flex-direction: column;">
+                        <input type="text" name="firstname" id="firstname" placeholder="First name" required>
+                        <input type="text" name="lastname" id="lastname" placeholder="Last name" required>
+                        <input type="text" name="jmbag" id="jmbag" placeholder="JMBAG" required>
+                        <input type="text" name="email" id="email" placeholder="Email" required>
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <button type="submit">Create</button>
+                    </form>
+                </div>
+                <div>
+                    <% if(account !=null){ %>
+                        <div style="margin-left: 20px; width: 800px;">
+                            <% for(var i=0; i<account.length; i++) {%>
+                                <div class="flex-row" style="margin-top: 15px; width: 100%;">
+                                    <div style="flex: 1;">id</div>
+                                    <div>
+                                        <%= account[i].id%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">jmbag</div>
+                                    <div>
+                                        <%= account[i].jmbag%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">firstname</div>
+                                    <div>
+                                        <%= account[i].firstname%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">lastname</div>
+                                    <div>
+                                        <%= account[i].lastname%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">password</div>
+                                    <div>
+                                        <%= account[i].password%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">salt</div>
+                                    <div>
+                                        <%= account[i].salt%>
+                                    </div>
+                                </div>
+                                <div class="flex-row">
+                                    <div style="flex: 1;">email</div>
+                                    <div>
+                                        <%= account[i].email%>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <% } %>
+                </div>
+                </div>
+           
+         
+        </div>
+
+
+        </main>
+        <%- include('./shared/end.ejs') %>
