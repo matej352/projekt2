@@ -7,10 +7,10 @@ const bcrypt = require("bcrypt")
 
 
 const pool = new Pool({
-	user: "adminko",
-	host: "dpg-cdhv41un6mpue9hi40ig-a.frankfurt-postgres.render.com",
-	database: 'vulnerable_db',
-	password: "xM5OiXstfF4LqbXJTt7xRyD34bYRxaaj",
+	user: process.env.DB_USER,
+	host: process.env.DB_HOST,
+	database: process.env.DB_NAME,
+	password: process.env.DB_PASSWORD,
 	port: 5432,
 	ssl: true
 
