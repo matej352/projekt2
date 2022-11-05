@@ -223,17 +223,10 @@ async function getStudent(studentId) {
 }
 
 async function createStudent(obj) {
-	let insert_into_query;
-	if (obj.salt) {
-		insert_into_query = "INSERT INTO Student VALUES (" + obj.id + ",'" + obj.jmbag  +"','" + obj.firstname + "','" + obj.lastname + "','" + obj.password + "','" + obj.salt + "','" + obj.email + "')";
-	} else {
-		insert_into_query = "INSERT INTO Student VALUES (" + obj.id + ",'" + obj.jmbag  +"','" + obj.firstname + "','" + obj.lastname + "','" + obj.password + "'," + obj.salt + ",'" + obj.email + "')";
-	}
-
-	console.log(insert_into_query)
-
+	let insert_into_query = 'INSERT INTO Student VALUES($1, $2, $3, $4, $5, $6, $7)';
+	
 	try {
-		const results = await (await pool.query(insert_into_query)).rows;
+		const results = await (await pool.query(insert_into_query, [obj.id, obj.jmbag, obj.firstname, obj.lastname, obj.password, obj.salt, obj.email])).rows;
 		return results;
 	}
 	catch (err) {
